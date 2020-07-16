@@ -1,0 +1,58 @@
+﻿@*@model PrigemtechSolution.Models.Employee*@
+@model PrigemtechSolution.ViewModels.HomeDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var photoPath = "~/images/" + (Model.Employee.PhotoPath ?? "noimage.png") ;
+}
+
+<h1>@Model.PageTitle</h1>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="row">
+        <img src="@photoPath" class="img-fluid" asp-append-version="true" />
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.Employee.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.Employee.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.Employee.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.Employee.Name)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.Employee.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.Employee.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.Employee.Deparment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.Employee.Deparment)
+        </dd>
+        <dd class="col-sm-10">
+            <a asp-controller="Home" asp-action="Details" asp-route-Id="@Model.Employee.Id" class="btn btn-primary">View</a>
+        </dd>
+        <dd class="col-sm-10">
+            <a asp-controller="Home" asp-action="Edit" asp-route-Id="@Model.Employee.Id" class="btn btn-primary">Edit</a>
+        </dd>
+        <dd class="card-footer text-center">
+
+
+            <a herf="#" class="btn btn-danger">Delete</a>
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
